@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Formulario de Cliente</h2>
+    <form th:action="@{/guardar}" method="post" th:object="${carros}">
+
+        <div class="row">
+            <div class="col-1 mb-3">
+                <label for="id-codigo" class="form-label">Código</label>
+                <input type="number" class="form-control" id="id-codigo" th:field="*{id}">
+            </div>
+
+            <!-- Marca -->
+            <div class="col-4 mb-3">
+                <label for="id-marca" class="form-label">Marca</label>
+                <input type="text" class="form-control" id="id-marca" th:field="*{marca}">
+            </div>
+
+            <!-- Modelo -->
+            <div class="col-4 mb-3">
+                <label for="id-modelo" class="form-label">Modelo</label>
+                <input type="text" class="form-control" id="id-modelo" th:field="*{modelo}">
+            </div>
+
+            <!-- Color -->
+            <div class="col-2 mb-3">
+                <label for="id-color" class="form-label">Color</label>
+                <input type="text" class="form-control" id="id-color" th:field="*{color}">
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Descripción -->
+            <div class="col-11 mb-3">
+                <label for="id-descripcion" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="id-descripcion" rows="3" th:field="*{descripcion}"></textarea>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Imagen -->
+            <div class="col-4 mb-3">
+                <label for="id-img" class="form-label">URL de tu Imagen</label>
+                <input class="form-control" type="text" id="id-img" th:field="*{img}">
+            </div>
+
+            <!-- Precio -->
+            <div class="col-3 mb-3">
+                <label for="id-precio" class="form-label">Precio</label>
+                <input type="text" class="form-control" id="id-precio" th:field="*{precio}">
+            </div>
+
+            <!-- Stock -->
+            <div class="col-3 mb-3">
+                <label for="id-stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="id-stock" th:field="*{stock}">
+            </div>
+        </div>
+
+
+        <!-- Botón de envío -->
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+</body>
+</html>
