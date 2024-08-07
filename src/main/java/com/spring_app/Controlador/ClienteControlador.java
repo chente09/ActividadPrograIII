@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ClienteControlador {
@@ -25,21 +26,39 @@ public class ClienteControlador {
     }
 
     //LEER
-    @GetMapping("/clientes")
+    @GetMapping("/cliente")
     public String mostrarClientes(Model model){
-        List<Cliente> clientes = clienteServicio.listarCliente();
-        model.addAttribute("clientes", clientes);
-        return "/Cliente/vistaCliente";
+        List<Cliente> clientes = clienteServicio.listarClientes();
+        model.addAttribute("cliente", clientes);
+        return "/Cliente/listarCliente";
     }
+
     //CREAR
-    @GetMapping("/clienteForm")
+    @GetMapping("/formularioCliente")
     public String formularioCliente(Model model){
-        model.addAttribute("clientes", new Cliente());
-        return "/Cliente/clienteForm";
+        model.addAttribute("cliente", new Cliente());
+        return "/Cliente/formularioCliente";
     }
-    @PostMapping("/guardar")
+
+    @PostMapping("/guardarCliente")
     public String crearCliente(Cliente cliente){
-        clienteServicio.guadarCliente(cliente);
-        return "redirect:/vistaCliente";
+        clienteServicio.guadarClientes(cliente);
+        return "redirect:/cliente";
     }
+
+    //ACTUALIZAR
+    @GetMapping("/editarCliente/{id}")
+    public String actualizarCliente(@PathVariable Long id, Model model){
+        Optional<Cliente> cliente = clienteServicio.buscarCliente(id);
+        model.addAttribute("cliente", cliente);
+        return "/Cliente/formularioCliente";
+    }
+
+    //ELIMINAR
+    @GetMapping("/eliminarCliente/{id}")
+    public String borrarCliente(@PathVariable Long id){
+        clienteServicio.eliminarClientes(id);
+        return "redirect:/cliente";
+    }
+
 }

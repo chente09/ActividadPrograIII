@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteServicio {
@@ -19,10 +20,16 @@ public class ClienteServicio {
                 .orElse(List.of());
     }
 
-    public  void  guadarCliente(Cliente cliente){
+    public List<Cliente> listarClientes(){
+        return clienteRepositorio.findAll();
+    }
+    public Optional<Cliente> buscarCliente(Long id){
+        return clienteRepositorio.findById(id);
+    }
+    public  void  guadarClientes(Cliente cliente){
         clienteRepositorio.save(cliente);
     }
-    public List<Cliente> listarCliente(){
-        return clienteRepositorio.findAll();
+    public void eliminarClientes(Long id){
+        clienteRepositorio.deleteById(id);
     }
 }
