@@ -15,14 +15,8 @@ public class Cliente {
     private String apellido;
     private String direccion;
 
-    @ManyToMany
-    @JoinTable(name="cliente_producto",
-            joinColumns = @JoinColumn(name = "id_cliente"),
-            inverseJoinColumns = @JoinColumn(name = "id_producto"))
+    @OneToMany(mappedBy = "cliente")
+    private List<Factura> facturas;
 
-    private List<Producto> productos;
 
-    public List<Producto> mostrarProductos(){
-        return productos;
-    }
 }

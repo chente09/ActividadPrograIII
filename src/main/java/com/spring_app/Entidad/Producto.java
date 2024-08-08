@@ -22,6 +22,6 @@ public class Producto {
     @JoinColumn(name="id_garantia")
     private Garantia garantia;
 
-    @ManyToMany(mappedBy = "productos")
-    private List<Cliente> clientes;
+    @OneToMany(mappedBy = "producto")
+    private List<Factura> facturas;
 }

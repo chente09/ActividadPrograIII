@@ -18,12 +18,12 @@ public class ClienteControlador {
     @Autowired
     private ClienteServicio clienteServicio;
 
-    @GetMapping("/productos/{id_cliente}")
-    public  String mostrarProductosByClienteId(@PathVariable Long id_cliente, Model model){
-        List<Producto> productos = clienteServicio.buscarProductosByClienteId(id_cliente);
-                model.addAttribute("productos", productos);
-                return "/Cliente/vistaCliente";
-    }
+//    @GetMapping("/productos/{id_cliente}")
+//    public  String mostrarProductosByClienteId(@PathVariable Long id_cliente, Model model){
+//        List<Producto> productos = clienteServicio.buscarProductosByClienteId(id_cliente);
+//                model.addAttribute("productos", productos);
+//                return "/Cliente/vistaCliente";
+//    }
 
     //LEER
     @GetMapping("/cliente")

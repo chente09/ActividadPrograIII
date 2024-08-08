@@ -14,11 +14,11 @@ public class ClienteServicio {
     @Autowired
     private ClienteRepositorio clienteRepositorio;
 
-    public List<Producto> buscarProductosByClienteId(Long id_cliente){
-        return clienteRepositorio.findById(id_cliente)
-                .map(Cliente::mostrarProductos)
-                .orElse(List.of());
-    }
+//    public List<Producto> buscarProductosByClienteId(Long id_cliente){
+//        return clienteRepositorio.findById(id_cliente)
+//                .map(Cliente::mostrarProductos)
+//                .orElse(List.of());
+//    }
 
     public List<Cliente> listarClientes(){
         return clienteRepositorio.findAll();
